@@ -48,7 +48,7 @@ export default class Pago {
         return Math.round(valor * 0.01);
     }
 
-    static efectuarPago() {
+    static facturarCompra() {
         document.getElementById("method-pay").addEventListener("click", async (event) => {
             event.preventDefault();
             let sentPoints;

@@ -1,14 +1,15 @@
 export default class Usuario {
-    #id
-    #name
-    #lastname
-    #cc
-    #email
-    #pass
+    #id;
+    #name;
+    #lastname;
+    #cc;
+    #email;
+    #pass;
+    #points;
 
-    constructor(id, name, lastname, cc, email, pass) {
+    constructor(id, uname, lastname, cc, email, pass) {
         this.#id = id;
-        this.#name = name;
+        this.#name = uname;
         this.#lastname = lastname;
         this.#cc = cc;
         this.#email = email;
@@ -65,7 +66,7 @@ export default class Usuario {
         this.#pass = pass;
     }
 
-    static registrar() {
+    static registrarCliente() {
         document.getElementById('registerForm').addEventListener('submit', async (event) => {
             event.preventDefault(); // evita que la página se recargue
 
@@ -112,8 +113,8 @@ export default class Usuario {
     }
 
     static iniciarSesion() {
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault(); // evita que la página se recargue
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // evita que la página se recargue
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -132,6 +133,32 @@ export default class Usuario {
             const msg = await respuesta.json();
 
             document.getElementById("login-response").textContent = msg.mensaje;
+        });
+    }
+
+    cerrarSesion() {
+        this.#id = undefined;
+        this.#name = undefined;
+        this.#lastname = undefined;
+        this.#cc = undefined;
+        this.#email = undefined;
+        this.#pass = undefined;
+        this.#points = undefined;
+    }
+
+    static mostrarDatosUsuarioActivo() { // mostrar informacion del usuario en la parte superior
+
+        window.addEventListener("DOMContentLoaded", async () => {
+            const respuesta = await fetch("/get-active-user-data"); 
+
+            const info = await respuesta.json();
+
+            if (info.mensaje) {
+
+            } else {
+                document.getElementById("active-user-data").textContent = (info.name + " " + info.lastname);
+                document.getElementById("active-user-points").textContent = ("Puntos: " + info.points);
+            }
         });
     }
 }

@@ -1,3 +1,3 @@
 import Usuario from "./classes/Usuario.js";
 
-Usuario.registrar();
+Usuario.registrarCliente();

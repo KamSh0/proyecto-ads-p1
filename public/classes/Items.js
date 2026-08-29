@@ -1,8 +1,7 @@
-
 export default class Items {
-    #ids = []
-    #nombres = [] 
-    #precios = []
+    #ids = [];
+    #nombres = [];
+    #precios = [];
     
     get precios() {
         return this.#precios;
@@ -38,13 +37,19 @@ export default class Items {
         this.#precios.pop()
     }
 
-    calcularTotalPrecios() {
+    calcularTotal() {
         let totalPrecios = 0;
         for (let i of this.#precios) {
             totalPrecios += i;
         }
 
         return totalPrecios;
+    }
+
+    reiniciar() {
+        this.#ids = [];
+        this.#nombres = [];
+        this.#precios = [];
     }
 
     static pedirItem() {
@@ -92,7 +97,11 @@ export default class Items {
 
                 itemTable.appendChild(row); // agregar fila con informacion del item especificado
 
-                document.getElementById("dynamic-item-table-total").textContent = await fetch("/total-payment");
+                const total = await fetch("/payment-preview");
+
+                const totalmensaje = await total.json()
+
+                document.getElementById("dynamic-item-table-total").textContent = totalmensaje.totalPrecios;
             } else {
                 console.log("ID No Encontrado.");
                 alert("Item no encontrado, asegúrese de que el ID es correcto.");
@@ -122,5 +131,4 @@ export default class Items {
             document.getElementById("dynamic-item-table-total").textContent = carrito.total;
         });
     }
-
 }

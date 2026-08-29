@@ -1,5 +1,4 @@
 export default class Pago {
-    constructor() {}
 
     static obtenerPuntosAnteriores() {
         document.getElementById("method-payWPoints").addEventListener("click", async (event) => {
@@ -45,34 +44,46 @@ export default class Pago {
         }
     }
 
-    static async efectuarPago() {
+    static calcularPuntos(valor) {
+        return Math.round(valor * 0.01);
+    }
+
+    static efectuarPago() {
         document.getElementById("method-pay").addEventListener("click", async (event) => {
             event.preventDefault();
+            let sentPoints;
+            const medioDePago = document.getElementById("payment-options").value;
 
             if (document.getElementById("method-payWPoints").disabled === true) {
-                const sentPoints = document.getElementById("sent-points").value;
+                sentPoints = document.getElementById("sent-points").value;
                 console.log("Puntos enviados " + sentPoints);
             } else {
-                const sentPoints = 0;
+                sentPoints = 0;
                 console.log(sentPoints + "<- Puntos no enviados");
             }
 
             const costoTotal = {
-                precio,
-                puntos
+                medioDePago,
+                sentPoints,
             }
             
 
-            const respuesta = fetch("/payment", {
+            const respuesta = await fetch("/payment", {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({valorTotal})
+                body: JSON.stringify(costoTotal)
             });
 
-            const resultado = respuesta.json();
+            const resultado = await respuesta.json();
 
             console.log(resultado);
 
+            if (resultado.error) {
+                alert(resultado.error);
+            } else {
+                alert(resultado.confirmation);
+                window.location.reload();
+            }
 
         });
     }

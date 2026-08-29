@@ -13,7 +13,8 @@
             <span>Tienda UPB - POS</span>
             <a href="./register.html">Registro de Usuario</a>
             <a href="./login.html">Inicio de Sesión Usuario</a>
-             
+            <span id="active-user-data"></span>
+            <span id="active-user-points"></span>
         </div>
         <div class="main-body">
             <div class="item-list">
@@ -49,7 +50,7 @@
             <div class="payment-parameters">
                 <form id="payment-methods">
                     <h4>Medios de Pago</h4>
-                    <select>
+                    <select id="payment-options">
                         <option>Efectivo</option>
                         <option>Tarjeta Crédito</option>
                         <option>Tarjeta Débito</option>
@@ -64,6 +65,7 @@
                         </form>
                     </div>
                     <button type="submit" id="method-pay">Pagar</button>
+                    <script type="module" src="payment.js"></script>
                 </form>
                 <h4 id="payment-special-discount"></h4>
             </div>

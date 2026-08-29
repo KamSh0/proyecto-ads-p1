@@ -1,16 +1,7 @@
 import Items from "./classes/Items.js";
+import Usuario from "./classes/Usuario.js";
 
+Usuario.mostrarDatosUsuarioActivo();
 Items.mostrarCarritoActual();
+
 Items.pedirItem();
-
-/*
-
-
-const userRequestedId = document.getElementById("requested-item-id");
-
-
-
-alert('2');
-
-const result = itemData.find()
-*/

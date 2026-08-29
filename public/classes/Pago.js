@@ -48,7 +48,20 @@ export default class Pago {
         return Math.round(valor * 0.01);
     }
 
-    static facturarCompra() {
+    static async facturarCompra() {
+
+        function descargarFactura(url, nombre) {
+
+            const link = document.createElement('a');
+            link.href = url;
+            
+            link.download = nombre; 
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
         document.getElementById("method-pay").addEventListener("click", async (event) => {
             event.preventDefault();
             let sentPoints;
@@ -80,8 +93,10 @@ export default class Pago {
 
             if (resultado.error) {
                 alert(resultado.error);
+
             } else {
                 alert(resultado.confirmation);
+                descargarFactura("http://localhost:3000/factura.txt", "factura.txt");
                 window.location.reload();
             }
 

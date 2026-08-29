@@ -1,5 +1,5 @@
 export default class Items {
-    #ids = [];
+    #ids = []; 
     #nombres = [];
     #precios = [];
     
@@ -34,6 +34,8 @@ export default class Items {
     }
 
     quitarUltimoProducto() {
+        this.#ids.pop()
+        this.#nombres.pop()
         this.#precios.pop()
     }
 

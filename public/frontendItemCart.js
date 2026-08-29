@@ -4,4 +4,4 @@ import Usuario from "./classes/Usuario.js";
 Usuario.mostrarDatosUsuarioActivo();
 Items.mostrarCarritoActual();
 
-Items.pedirItem();
+Items.pasarItem();

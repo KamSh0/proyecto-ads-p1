@@ -52,7 +52,7 @@ export default class Items {
         this.#precios = [];
     }
 
-    static pedirItem() {
+    static pasarItem() {
         document.getElementById("item-list-form").addEventListener("submit", async (event) => { // escuchar el submit
             event.preventDefault(); // prevenir recarga
             

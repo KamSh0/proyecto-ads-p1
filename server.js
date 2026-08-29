@@ -1,15 +1,19 @@
 // """""""backend?????"""""""
+import Items from './public/classes/Items.js';
+import Pago from './public/classes/Pago.js';
 import Usuario from './public/classes/Usuario.js';
 import express from 'express';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
 import session from 'express-session';
+import items from './items.json' with {type: 'json'};
 
 
 const app = express();
 const PORT = 3000;
 
 const usuarioActivo = new Usuario();
+const itemsActivos = new Items();
 
 app.use(express.json()); // interpretar JSON como objeto
 app.use(express.static("public")); // los archivos dentro de la carpeta public pueden ser enviados directamente al navegador
@@ -186,8 +190,57 @@ app.post("/points", requiereLogin, async (req, res) => { // acceder a los puntos
 });
 
 app.post("/payment", async (req, res) => {
-    
+    const x = req.body;
+    res(500)
+});
 
+app.post("/add-to-cart", async (req, res) => {
+    const {
+        id
+    } = req.body
+
+    console.log("Solicitud de agregar al carrito.");
+    console.log(items);
+    console.log(id);
+
+    const item = items.find(producto => producto.id === parseInt(id))
+
+    console.log(item);
+
+    if (item) {
+        itemsActivos.agregarProducto(item.id, item.name, item.price);
+
+        res.json({
+            existe: true,
+            id: item.id,
+            precio: item.price,
+            nombre: item.name
+        })
+    } else {
+        res.json({
+            error: "El ID solicitado no corresponde a ningún producto."
+        })
+    }
+});
+
+app.get("/cart", (req, res) => {
+    console.log("\nCarrito en backend: " + itemsActivos.ids)
+
+    res.json({
+        ids: itemsActivos.ids,  
+        nombres: itemsActivos.nombres,
+        precios: itemsActivos.precios
+    });
+});
+
+app.post("/total-payment", async (res) => {
+    const totalPrecios = itemsActivos.calcularTotalPrecios();
+
+    console.log("Total de precios = "+ totalPrecios)
+
+    res.json({
+        totalPrecios: totalPrecios
+    });
 });
 
 

@@ -1,4 +1,4 @@
-import Pago from "./classes/Pago";
+import Pago from "./classes/Pago.js";
 
 Pago.obtenerPuntosAnteriores();
 

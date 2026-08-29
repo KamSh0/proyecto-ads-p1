@@ -15,7 +15,7 @@ export default class Usuario {
         this.#pass = pass;
     }
 
-// --- GETTERS ---
+    // --- getters ---
     get id() {
         return this.#id;
     }
@@ -40,7 +40,7 @@ export default class Usuario {
         return this.#pass;
     }
 
-    // --- SETTERS ---
+    // --- setters ---
     set id(id) {
         this.#id = id;
     }

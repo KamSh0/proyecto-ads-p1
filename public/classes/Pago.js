@@ -37,7 +37,43 @@ export default class Pago {
         });
     }
 
-    static efectuarPago() {
-        
+    static calcularDescuento(valor) {
+        if (valor > 50000) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static async efectuarPago() {
+        document.getElementById("method-pay").addEventListener("click", async (event) => {
+            event.preventDefault();
+
+            if (document.getElementById("method-payWPoints").disabled === true) {
+                const sentPoints = document.getElementById("sent-points").value;
+                console.log("Puntos enviados " + sentPoints);
+            } else {
+                const sentPoints = 0;
+                console.log(sentPoints + "<- Puntos no enviados");
+            }
+
+            const costoTotal = {
+                precio,
+                puntos
+            }
+            
+
+            const respuesta = fetch("/payment", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({valorTotal})
+            });
+
+            const resultado = respuesta.json();
+
+            console.log(resultado);
+
+
+        });
     }
 }

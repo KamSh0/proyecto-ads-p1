@@ -1,3 +1,3 @@
-import Usuario from "./classes/Usuario";
+import Usuario from "./classes/Usuario.js";
 
 Usuario.registrar();

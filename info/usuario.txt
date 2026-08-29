@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "name": "Michael",
+        "lastname": "Schumacher",
+        "cc": "98376198",
+        "email": "mschumi@ferrari.com",
+        "pass": "$2b$12$yCHhwBZ/7z6eul5F5SHuz.kbYmpwa9yomHCmOlc7gRO5fhMP7PXFW" 
+
+        password real: 7worldchampion
+    }
+]

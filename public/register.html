@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Tienda UPB</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Registro Cliente - Tienda UPB">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+
+    <body>
+        <div class="container-top-bar">
+            <h2>Registro Cliente Nuevo</h2>
+        </div>
+        <div class="main-body">
+            <form id="registerForm">
+                <input type="text" id="nombre" placeholder="Nombre">
+                <input type="text" id="apellidos" placeholder="Apellidos">
+                <input type="text" id="cedula" placeholder="Cédula de Ciudadanía">
+                <input type="text" id="email" placeholder="Correo Electrónico" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <script src="./userRegister.js"></script>
+            <h4 id="register-response"></h4>
+        </div>
+    </body>
+</html>
+

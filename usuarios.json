@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Michael",
+        "lastname": "Schumacher",
+        "cc": "98376198",
+        "email": "mschumi@ferrari.com",
+        "pass": "$2b$12$yCHhwBZ/7z6eul5F5SHuz.kbYmpwa9yomHCmOlc7gRO5fhMP7PXFW",
+        "points": 9870
+    },
+    {
+        "id": 2,
+        "name": "dsa",
+        "lastname": "ssss",
+        "cc": "dsa",
+        "email": "as",
+        "pass": "$2b$12$mdvYioOrcMr6MdFwyCfY4euKYgv8UL9fH4vbOc5JxwfkE3XDHSO36",
+        "points": 0
+    }
+]

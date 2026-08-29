@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Tienda UPB</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Software Punto de Venta - Tienda UPB">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+
+    <body>
+        <div class="container-top-bar">
+            <span>Tienda UPB - POS</span>
+            <a href="./register.html">Registro de Usuario</a>
+            <a href="./login.html">Inicio de Sesión Usuario</a>
+        </div>
+        <div class="main-body">
+            <div class="item-list">
+                <h3>Lista de Ítems</h3>
+                <form id="item-list-form">
+                    <h4>Añadir</h4>
+                    <input type="text" id="requested-item-id" placeholder="ID Numérico del Producto">
+                    <button type="submit" id="method-addItem">Añadir</button>
+                </form>
+                <table id="dynamic-item-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre del Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!--items-->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th> </th>
+                            <th>Total a pagar:</th>
+                            <th id="dynamic-item-table-total"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <script type="module" src="./dynamicItemList.js" defer></script>
+            </div>
+            <div class="payment-parameters">
+                <form id="payment-methods">
+                    <h4>Medios de Pago</h4>
+                    <select>
+                        <option>Efectivo</option>
+                        <option>Tarjeta Crédito</option>
+                        <option>Tarjeta Débito</option>
+                    </select>
+                    <div>
+                        <form>
+                            <button type="button" id="method-payWPoints">Pagar con Puntos</button>
+                            <table id="user-points">
+                                <!--points input-->
+                            </table>
+                            <script type="module" src="points.js" defer></script>
+                        </form>
+                    </div>
+                    <button type="submit" id="method-pay">Pagar</button>
+                </form>
+                <h4 id="payment-special-discount"></h4>
+            </div>
+        </div>
+    </body>
+</html>
+

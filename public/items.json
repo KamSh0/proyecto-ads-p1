@@ -1,0 +1,67 @@
+[
+    {
+        "id":7250,
+        "name":"Coca-Cola Zero 1500ml",
+        "price":4500
+    },
+    {
+        "id":7255,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },    
+    {
+        "id":7260,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":7265,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":7270,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":8250,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":8255,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":8260,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":8265,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+        {
+        "id":8270,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":9250,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":9255,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    },
+    {
+        "id":9260,
+        "name":"Jugo Hit Mango 500ml",
+        "price":2900
+    }
+]

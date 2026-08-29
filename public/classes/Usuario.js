@@ -136,16 +136,6 @@ export default class Usuario {
         });
     }
 
-    cerrarSesion() {
-        this.#id = undefined;
-        this.#name = undefined;
-        this.#lastname = undefined;
-        this.#cc = undefined;
-        this.#email = undefined;
-        this.#pass = undefined;
-        this.#points = undefined;
-    }
-
     static mostrarDatosUsuarioActivo() { // mostrar informacion del usuario en la parte superior
 
         window.addEventListener("DOMContentLoaded", async () => {
@@ -160,5 +150,15 @@ export default class Usuario {
                 document.getElementById("active-user-points").textContent = ("Puntos: " + info.points);
             }
         });
+    }
+
+    cerrarSesion() {
+        this.#id = undefined;
+        this.#name = undefined;
+        this.#lastname = undefined;
+        this.#cc = undefined;
+        this.#email = undefined;
+        this.#pass = undefined;
+        this.#points = undefined;
     }
 }

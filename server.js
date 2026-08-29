@@ -1,12 +1,15 @@
 // """""""backend?????"""""""
-
+import Usuario from './public/classes/Usuario.js';
 import express from 'express';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
 import session from 'express-session';
 
+
 const app = express();
 const PORT = 3000;
+
+const usuarioActivo = new Usuario();
 
 app.use(express.json()); // interpretar JSON como objeto
 app.use(express.static("public")); // los archivos dentro de la carpeta public pueden ser enviados directamente al navegador
@@ -67,6 +70,16 @@ app.post("/register", async (req, res) => { // Cuando alguien haga una petición
         JSON.stringify(usuarios, null, 4)
     );
 
+    req.session.usuarioId = nuevoUsuario.id;
+
+    // Instancia class Usuario
+    usuarioActivo.id = nuevoUsuario.id;
+    usuarioActivo.name = nuevoUsuario.name;
+    usuarioActivo.lastname = nuevoUsuario.lastname;
+    usuarioActivo.cc = nuevoUsuario.cc;
+    usuarioActivo.email = nuevoUsuario.email;
+    usuarioActivo.pass = nuevoUsuario.pass;
+
     res.json({ // respuesta si todo el proceso es exitoso
         mensaje: "Usuario registrado correctamente."
     });
@@ -110,6 +123,14 @@ app.post("/login", async (req, res) => { // Login del usuario
 
     req.session.usuarioId = usuario.id;
 
+    // Instanciar class Usuario
+    usuarioActivo.id = usuario.id;
+    usuarioActivo.name = usuario.name;
+    usuarioActivo.lastname = usuario.lastname;
+    usuarioActivo.cc = usuario.cc;
+    usuarioActivo.email = usuario.email;
+    usuarioActivo.pass = usuario.pass;
+
     console.log(req.session.usuarioId);
     console.log("Login exitoso");
 
@@ -120,17 +141,14 @@ app.post("/login", async (req, res) => { // Login del usuario
 
 app.post("/logout", (req, res) => { // cerrar sesion
 
+    usuarioActivo = null;
+
     req.session.destroy(() => {
         res.json({
             mensaje: "Sesión cerrada"
         });
     });
 
-});
-
-
-app.listen(PORT, () => {
-    console.log(`Servidor funcionando en http://localhost:${PORT}`);
 });
 
 async function requiereLogin(req, res, next) { // detener accion, si no hay sesion activa
@@ -148,7 +166,7 @@ async function requiereLogin(req, res, next) { // detener accion, si no hay sesi
 }
 
 app.post("/points", requiereLogin, async (req, res) => { // acceder a los puntos
-    const dummy = req.body;
+    const x = req.body;
 
     console.log("Inicio acceso a puntos");
 
@@ -165,4 +183,14 @@ app.post("/points", requiereLogin, async (req, res) => { // acceder a los puntos
     res.json({
         valor: points
     });
+});
+
+app.post("/payment", async (req, res) => {
+    
+
+});
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor funcionando en http://localhost:${PORT}`);
 });

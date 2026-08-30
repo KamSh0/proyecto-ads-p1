@@ -32,7 +32,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-app.post("/register", async (req, res) => { // Cuando alguien haga una petición HTTP POST a /registrar, ejecuta esta función
+app.post("/register", async (req, res) => { // Cuando alguien haga una petición HTTP POST a /registrar, ejecutar esta función
 
     const {
         name,
@@ -154,7 +154,6 @@ app.post("/login", async (req, res) => { // Login del usuario
 });
 
 app.get("/logout", async (req, res) => {
-    usuarioActivo.cerrarSesion();
 
     req.session.destroy((err) => {
         if (err) {
@@ -162,8 +161,9 @@ app.get("/logout", async (req, res) => {
             return res.status(500).json({ error: "No se pudo cerrar sesión" });
         }
         console.log("Sesión cerrada.");
+        usuarioActivo.cerrarSesion();
         res.clearCookie('connect.sid');
-        res.json({ mensaje: "Sesión cerrada exitosamente" }); // 👈 esto faltaba
+        res.json({ mensaje: "Sesión cerrada exitosamente" });
     });
 });
 
@@ -201,7 +201,7 @@ app.post("/points", requiereLogin, async (req, res) => { // acceder a los puntos
     });
 });
 
-app.post("/payment", async (req, res) => {
+app.post("/payment", async (req, res) => { // iniciar proceso de pago
     try {
         if (itemsActivos.calcularTotal() <= 0 || isNaN(itemsActivos.calcularTotal())) {
             console.log("Error: Productos no ingresados");
@@ -254,7 +254,7 @@ app.post("/payment", async (req, res) => {
 
             console.log("Pago final (- puntos - descuentos) = " + finalTotalPayment.final)
 
-            const respuesta = await fetch(`${baseUrl}/payment-confirmation`, {
+            const respuesta = await fetch(`${baseUrl}/payment-confirmation`, { // solicitar confirmacion de pago
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(finalTotalPayment)
@@ -348,7 +348,7 @@ app.post("/payment-confirmation", async (req, res) => { // Confirmacion de pago 
     }
 });
 
-app.post("/add-to-cart", async (req, res) => {
+app.post("/add-to-cart", async (req, res) => { // agregar item al carrito
     const {
         id
     } = req.body
@@ -377,7 +377,17 @@ app.post("/add-to-cart", async (req, res) => {
     }
 });
 
-app.get("/cart", (req, res) => {
+app.get("/remove-from-cart", async (req, res) => { // quitar ultimo item del carrito
+    console.log("Solicitud de eliminar ultimo del carrito.");
+
+    itemsActivos.quitarUltimoProducto();
+
+    res.json({
+        mensaje: "Ultimo item eliminado."
+    });
+});
+
+app.get("/cart", (req, res) => { // mostrar carrito actual
     console.log("\nCarrito en backend: " + itemsActivos.ids)
 
     res.json({
@@ -387,7 +397,7 @@ app.get("/cart", (req, res) => {
     });
 });
 
-app.get("/payment-preview", async (req, res) => {
+app.get("/payment-preview", async (req, res) => { // mostrar total a pagar actual
     const totalPrecios = itemsActivos.calcularTotal();
 
     console.log("Total de precios backend = "+ totalPrecios)
@@ -397,7 +407,7 @@ app.get("/payment-preview", async (req, res) => {
     });
 });
 
-app.get("/get-active-user-data", requiereLogin, async (req, res) => {
+app.get("/get-active-user-data", requiereLogin, async (req, res) => { // mostrar datos usuario activo
     
     res.json({
         id: usuarioActivo.id,
@@ -409,7 +419,7 @@ app.get("/get-active-user-data", requiereLogin, async (req, res) => {
 
 });
 
-app.post("/get-ticket", async (req, res) => {
+app.post("/get-ticket", async (req, res) => { // generar factura
     const {
         cashOrCard,
         final,
@@ -426,7 +436,7 @@ TIENDA UPB
 
 `;
 
-    factura += `FECHA: ${new Date().toISOString()}\n`
+    factura += `FECHA: ${new Date().toString()}\n`
 
     if (usuarioActivo.id) {
         factura += `CLIENTE: ${usuarioActivo.name + " " + usuarioActivo.lastname}\n`

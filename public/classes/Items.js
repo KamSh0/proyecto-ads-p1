@@ -34,9 +34,12 @@ export default class Items {
     }
 
     quitarUltimoProducto() {
+
         this.#ids.pop();
         this.#nombres.pop();
         this.#precios.pop();
+
+
     }
 
     calcularTotal() {
@@ -55,6 +58,8 @@ export default class Items {
     }
 
     static pasarItem() {
+
+        // Agregar item
         document.getElementById("item-list-form").addEventListener("submit", async (event) => { // escuchar el submit
             event.preventDefault(); // prevenir recarga
             
@@ -102,11 +107,25 @@ export default class Items {
                 const totalmensaje = await total.json()
 
                 document.getElementById("dynamic-item-table-total").textContent = totalmensaje.totalPrecios;
+
+
             } else {
                 console.log("ID No Encontrado.");
                 alert("Item no encontrado, asegúrese de que el ID es correcto.");
             }   
         });
+
+        // Quitar Ultimo Item
+        document.getElementById("item-list-form").addEventListener('reset', async (event) => {
+            event.preventDefault();
+
+            await fetch("/remove-from-cart", {
+                method: "GET"
+            })
+
+            window.location.reload();
+        });
+
     }
 
     static mostrarCarritoActual() {

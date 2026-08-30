@@ -144,7 +144,7 @@ export default class Usuario {
             const info = await respuesta.json();
 
             if (info.mensaje) {
-
+                console.log(info.mensaje);
             } else {
                 document.getElementById("active-user-data").textContent = (info.name + " " + info.lastname);
                 document.getElementById("active-user-points").textContent = ("Puntos: " + info.points);
@@ -161,9 +161,17 @@ export default class Usuario {
 
                 boton.addEventListener("click", async () => {
 
-                    await fetch("/logout", {
+                    const respuesta = await fetch("/logout", {
                         method: "GET"
                     });
+
+                    const info = await respuesta.json();
+
+                    if (info.error) {
+                        console.log(info.error);
+                    } else {
+                        console.log(info.mensaje);
+                    }
 
                     location.reload();
                 });

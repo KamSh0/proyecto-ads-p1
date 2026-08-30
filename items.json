@@ -9,59 +9,59 @@
         "name":"Jugo Hit Mango 500ml",
         "price":2900
     },    
-    {
-        "id":7260,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+{
+        "id": 7260,
+        "name": "Gaseosa Coca-Cola Original 400ml",
+        "price": 3000
     },
     {
-        "id":7265,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 7265,
+        "name": "Papas Margarita Pollo 110g",
+        "price": 5500
     },
     {
-        "id":7270,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 7270,
+        "name": "Pony Malta Pet 330ml",
+        "price": 2500
     },
     {
-        "id":8250,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 8250,
+        "name": "Galletas Choky Paquete x6",
+        "price": 4200
     },
     {
-        "id":8255,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 8255,
+        "name": "Chocolatina Jet Tradicional 12g",
+        "price": 1000
     },
     {
-        "id":8260,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 8260,
+        "name": "Leche Alquería Entera 1L",
+        "price": 4800
     },
     {
-        "id":8265,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
-    },
-        {
-        "id":8270,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 8265,
+        "name": "Arequipe Alpina 220g",
+        "price": 6200
     },
     {
-        "id":9250,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 8270,
+        "name": "Detodito Mixto BBQ 45g",
+        "price": 3200
     },
     {
-        "id":9255,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 9250,
+        "name": "Café Sello Rojo 250g",
+        "price": 9800
     },
     {
-        "id":9260,
-        "name":"Jugo Hit Mango 500ml",
-        "price":2900
+        "id": 9255,
+        "name": "Pan Bimbo Tajado Blanco 450g",
+        "price": 7500
+    },
+    {
+        "id": 9260,
+        "name": "Agua Cristal Sin Gas 600ml",
+        "price": 2000
     }
 ]

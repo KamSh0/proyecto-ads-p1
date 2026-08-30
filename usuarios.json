@@ -6,7 +6,7 @@
         "cc": "98376198",
         "email": "mschumi@ferrari.com",
         "pass": "$2b$12$yCHhwBZ/7z6eul5F5SHuz.kbYmpwa9yomHCmOlc7gRO5fhMP7PXFW",
-        "points": 11026
+        "points": 11071
     },
     {
         "id": 2,
@@ -15,6 +15,15 @@
         "cc": "dsa",
         "email": "as",
         "pass": "$2b$12$mdvYioOrcMr6MdFwyCfY4euKYgv8UL9fH4vbOc5JxwfkE3XDHSO36",
+        "points": 0
+    },
+    {
+        "id": 3,
+        "name": "Joan Camilo",
+        "lastname": "Soto Duarte",
+        "cc": "1142716085",
+        "email": "joan.csoto@upb.edu.co",
+        "pass": "$2b$12$0WieVqj3sJa9be.HY/Vb2exTCR9G0PXuHtLzIUo/Y3d0qoKtFGE2O",
         "points": 0
     }
 ]

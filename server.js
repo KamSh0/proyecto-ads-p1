@@ -154,6 +154,8 @@ app.post("/login", async (req, res) => { // Login del usuario
 });
 
 app.get("/logout", async (req, res) => {
+    usuarioActivo.cerrarSesion();
+
     req.session.destroy((err) => {
         if (err) {
             console.log("Error al cerrar sesión:", err);
@@ -406,20 +408,6 @@ app.get("/get-active-user-data", requiereLogin, async (req, res) => {
     })
 
 });
-
-function descargarFactura(url, nombre) {
-  // Create a temporary hidden anchor element
-  const link = document.createElement('a');
-  link.href = url;
-  
-  // The download attribute forces the browser to save instead of navigate
-  link.download = nombre; 
-  
-  // Append to the body, click it programmatically, then remove it
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
 
 app.post("/get-ticket", async (req, res) => {
     const {

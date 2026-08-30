@@ -79,6 +79,8 @@ export default class Pago {
                 medioDePago,
                 sentPoints,
             }
+
+            document.getElementById("waiting").textContent = "Esperando confirmación..."
             
 
             const respuesta = await fetch("/payment", {
@@ -91,6 +93,8 @@ export default class Pago {
 
             console.log(resultado);
 
+            document.getElementById("waiting").textContent = '';
+
             if (resultado.error) {
                 alert(resultado.error);
 
@@ -99,6 +103,8 @@ export default class Pago {
                 descargarFactura("http://localhost:3000/factura.txt", "factura.txt");
                 window.location.reload();
             }
+
+
 
         });
     }

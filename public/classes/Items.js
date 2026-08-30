@@ -34,9 +34,9 @@ export default class Items {
     }
 
     quitarUltimoProducto() {
-        this.#ids.pop()
-        this.#nombres.pop()
-        this.#precios.pop()
+        this.#ids.pop();
+        this.#nombres.pop();
+        this.#precios.pop();
     }
 
     calcularTotal() {
@@ -86,8 +86,6 @@ export default class Items {
                 const itemTable = document.getElementById("dynamic-item-table");
                 const row = document.createElement("tr"); // crear elemento en el html
 
-
-                
 
                 row.innerHTML = `
                 <td>${mensaje.id}</td>

@@ -148,6 +148,28 @@ export default class Usuario {
             } else {
                 document.getElementById("active-user-data").textContent = (info.name + " " + info.lastname);
                 document.getElementById("active-user-points").textContent = ("Puntos: " + info.points);
+                document.getElementById("home-login").hidden = true;
+                document.getElementById("home-register").hidden = true;
+
+                const topBar = document.querySelector(".container-top-bar");
+
+                const boton = document.createElement("button");
+
+                boton.textContent = "Cerrar sesión";
+                boton.id = ("logout-button");
+
+
+                boton.addEventListener("click", async () => {
+
+                    await fetch("/logout", {
+                        method: "GET"
+                    });
+
+                    location.reload();
+                });
+
+
+                topBar.appendChild(boton);
             }
         });
     }
